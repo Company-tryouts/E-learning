@@ -1,0 +1,23 @@
+{% extends "admin/change_list.html" %}
+
+{% block content %}
+<h1>Memcached Stats</h1>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Server</th>
+        <th>Stats</th>
+    </tr>
+    {% for server, stat in memcache_stats %}
+    <tr>
+        <td>{{ server }}</td>
+        <td>
+            <ul>
+            {% for key, value in stat.items %}
+                <li>{{ key }} : {{ value }}</li>
+            {% endfor %}
+            </ul>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

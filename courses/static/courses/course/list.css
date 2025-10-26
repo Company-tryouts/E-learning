@@ -1,0 +1,106 @@
+/* Reset some basic styles */
+body, h1, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Page Title */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Container for sidebar + content */
+.contents {
+    margin-bottom: 30px;
+}
+
+#modules {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+}
+
+#modules li {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#modules li.selected {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+#modules li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#modules li span {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 3px;
+}
+
+/* Courses list */
+.module {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.module h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.module h3 a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.module h3 a:hover {
+    text-decoration: underline;
+}
+
+.module p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Course link in paragraph */
+.module p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.module p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #modules {
+        flex-direction: column;
+    }
+    
+    .module {
+        grid-template-columns: 1fr;
+    }
+}

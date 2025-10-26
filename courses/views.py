@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.core.cache import cache
+
 
 # Create your views here.
 from django.views.generic import ListView
@@ -186,5 +188,73 @@ class ModuleContentListView(TemplateResponseMixin, View):
             course__owner=request.user
         )
         return self.render_to_response({'module': module})
+    
+
+from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
+from .models import Module
+
+class ModuleOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
+    def post(self, request):
+        for id, order in self.request_json.items():
+            Module.objects.filter(id=id, course__owner=request.user).update(order=order)
+        return self.render_json_response({'saved': 'OK'})
+    
+
+class ContentOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
+    def post(self, request, *args, **kwargs):
+        for id, order in self.request_json.items():
+            Content.objects.filter(
+                id=id,
+                module__course__owner=request.user
+            ).update(order=order)
+        return self.render_json_response({'saved': 'OK'})
+    
+
+from django.db.models import Count
+from .models import Course, Subject
+
+class CourseListView(TemplateResponseMixin, View):
+    model = Course
+    template_name = 'courses/course/list.html'
+
+    def get(self, request, subject=None):
+        subjects = cache.get('all_subjects')
+        if not subjects:
+            subjects = Subject.objects.annotate(total_courses=Count('courses'))
+            cache.set('all_subjects', subjects)
+
+        courses = Course.objects.annotate(total_modules=Count('modules'))
+
+        selected_subject = None
+        if subject:
+            selected_subject = get_object_or_404(Subject, slug=subject)
+            courses = courses.filter(subject=selected_subject)
+
+        context = {
+            'subjects': subjects,
+            'subject': selected_subject,
+            'courses': courses
+        }
+
+        return self.render_to_response(context)
+    
+from students.forms import CourseEnrollForm
+from django.views.generic import DetailView
+
+class CourseDetailView(DetailView):
+    model = Course
+    template_name = 'courses/course/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['enroll_form'] = CourseEnrollForm(initial={'course': self.object})
+        return context
+    
+
+
+
+
+
+
 
 

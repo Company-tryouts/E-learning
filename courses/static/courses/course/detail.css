@@ -1,0 +1,45 @@
+/* course.css */
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.module {
+    background-color: #f9f9f9;
+    border-left: 4px solid #3498db;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.module h2 {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.module p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.module a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.module a:hover {
+    color: #1d6fa5;
+    text-decoration: underline;
+}
+
+/* Optional: make linebreaks look nicer */
+.module p + p {
+    margin-top: 1em;
+}

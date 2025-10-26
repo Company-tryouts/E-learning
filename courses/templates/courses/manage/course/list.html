@@ -1,8 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}My courses{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'courses/manage/course/list.css' %}">
 <h1>My Courses</h1>
 
 <div class="module">
@@ -13,6 +15,10 @@
                 <a href="{% url 'course_edit' course.id %}">Edit</a>
                 <a href="{% url 'course_delete' course.id %}">Delete</a>
                 <a href="{% url "course_module_update" course.id %}">Edit modules</a>
+                {% if course.modules.count > 0 %}
+                <a href="{% url 'module_content_list' course.modules.first.id %}">Manage contents</a>
+                {% endif %}
+
                 
             </p>
         </div>

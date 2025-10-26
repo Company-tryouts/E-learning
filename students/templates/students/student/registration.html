@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Sign up - Chapter 11 [421]
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'students/css/students/student/registration.css' %}">
+<h1>Sign up</h1>
+
+<div class="module">
+    <p>Enter your details to create an account:</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <input type="submit" value="Create my account">
+        </p>
+    </form>
+</div>
+{% endblock %}

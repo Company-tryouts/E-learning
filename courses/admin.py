@@ -19,3 +19,31 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ['title', 'overview']
     prepopulated_fields = {'slug': ('title',)}
     inlines = [ModuleInline]
+
+
+from django.contrib import admin
+from django.urls import path
+from django.shortcuts import render
+import memcache
+
+mc = memcache.Client(['127.0.0.1:11211'])
+
+# Dummy model just for the admin menu
+from django.db import models
+class DummyMemcache(models.Model):
+    class Meta:
+        managed = False
+        verbose_name = "Memcached Stats"
+        verbose_name_plural = "Memcached Stats"
+
+@admin.register(DummyMemcache)
+class MemcacheAdmin(admin.ModelAdmin):
+    change_list_template = "memcache_stats.html"
+
+    def changelist_view(self, request, extra_context=None):
+        stats = mc.get_stats()
+        context = {
+            **(extra_context or {}),
+            'memcache_stats': stats,
+        }
+        return super().changelist_view(request, extra_context=context)

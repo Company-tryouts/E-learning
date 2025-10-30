@@ -1,106 +1,105 @@
-/* Reset some basic styles */
-body, h1, h3, p, ul, li, a {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
-    padding: 20px;
-}
-
-/* Page Title */
+/* list.css */
 h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+ text-align: left;
+ margin: 0 0 30px 0;
+ font-size: 32px;
+ color: #1e1e1e;
+ border-bottom: 2px solid #ddd;
+ padding-bottom: 10px;
 }
 
-/* Container for sidebar + content */
-.contents {
-    margin-bottom: 30px;
-}
-
+/* --- Sidebar Content Styling --- */
 #modules {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 0;
+ list-style: none;
+ margin: 0;
+ padding: 0 10px 0 0;
 }
 
 #modules li {
-    border: 1px solid #ddd;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background-color: #fff;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-#modules li.selected {
-    background-color: #007bff;
-    color: #fff;
-    font-weight: bold;
+ margin-bottom: 5px;
 }
 
 #modules li a {
-    text-decoration: none;
-    color: inherit;
+ display: block;
+ color: #007bff;
+ text-decoration: none;
+ padding: 10px 12px;
+ border-radius: 6px;
+ transition: background 0.2s ease, color 0.2s ease;
+ font-size: 16px;
+}
+
+#modules li a:hover {
+ background: #e9f5ff;
+ color: #0056b3;
+}
+
+#modules li.selected a {
+ background: #007bff;
+ color: #fff;
+ font-weight: 600;
+ box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
 }
 
 #modules li span {
-    display: block;
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 3px;
+ display: block;
+ font-size: 13px;
+ color: rgba(255, 255, 255, 0.7); /* Lighter text color for course count */
 }
 
-/* Courses list */
-.module {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+#modules li.selected span {
+ color: rgba(255, 255, 255, 0.9);
 }
 
-.module h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+/* --- Main Course Listing (Using CSS Grid) --- */
+.module-list-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+ gap: 20px;
 }
 
-.module h3 a {
-    text-decoration: none;
-    color: #007bff;
+.course-module {
+ background: white;
+ border-radius: 8px;
+ padding: 20px;
+ box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.module h3 a:hover {
-    text-decoration: underline;
+.course-module:hover {
+ transform: translateY(-3px);
+ box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
-.module p {
-    font-size: 0.95rem;
-    color: #555;
+.course-module h3 {
+ font-size: 20px;
+ margin-top: 0;
+ margin-bottom: 10px;
 }
 
-/* Course link in paragraph */
-.module p a {
-    color: #007bff;
-    text-decoration: none;
+.course-module h3 a {
+ color: #343a40;
+ text-decoration: none;
+ transition: color 0.2s;
 }
 
-.module p a:hover {
-    text-decoration: underline;
+.course-module h3 a:hover {
+ color: #007bff;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    #modules {
-        flex-direction: column;
-    }
-    
-    .module {
-        grid-template-columns: 1fr;
-    }
+.course-meta {
+ color: #6c757d;
+ font-size: 14px;
+ line-height: 1.5;
+ margin: 0;
+}
+
+.subject-link {
+ color: #007bff;
+ text-decoration: none;
+}
+
+.divider {
+ margin: 0 5px;
+ color: #ccc;
 }

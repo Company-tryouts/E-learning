@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background: #f9fafb;
+  color: #2c2c2c;
+}
+
+h1 {
+  text-align: center;
+  margin: 25px 0;
+  font-size: 26px;
+  color: #1e1e1e;
+  letter-spacing: 0.5px;
+}
+
+.contents {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e3e3e3;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  box-shadow: 1px 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.contents h3 {
+  font-size: 17px;
+  color: #444;
+  margin-bottom: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#modules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#modules li {
+  margin-bottom: 10px;
+}
+
+#modules li a {
+  display: block;
+  color: #2c5282;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+  font-size: 15px;
+}
+
+#modules li a:hover {
+  background: #ebf8ff;
+  color: #1a365d;
+}
+
+#modules li.selected a {
+  background: #2b6cb0;
+  color: #fff;
+  font-weight: 500;
+}
+
+.module {
+  margin-left: 270px;
+  padding: 35px;
+  box-sizing: border-box;
+}
+
+.module h3 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #1a202c;
+}
+
+.module p {
+  color: #4a5568;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}

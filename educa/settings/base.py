@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from pathlib import Path
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-%&(#1#@h%cu6do32=*1zl&)g7m^_lrp*)%3$_42r3y8jlfi^-p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -49,6 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # <-- add this line
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -82,8 +85,12 @@ WSGI_APPLICATION = 'educa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'educa',
+        'USER' : 'educa',
+        'PASSWORD' : 'Bhavani333$',
+        'HOST': 'localhost',     # since it’s on your system
+        'PORT': '5432',
     }
 }
 
@@ -122,7 +129,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+# STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -154,3 +167,13 @@ CHANNEL_LAYERS = {
     },
 }
 
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://educaproject.com",
+    "http://educaproject.com",
+    "https://127.0.0.1",
+    "http://127.0.0.1",
+    "http://localhost",
+    "https://localhost",
+]
+ALLOWED_HOSTS = ["educaproject.com", "www.educaproject.com", "127.0.0.1", "localhost"]

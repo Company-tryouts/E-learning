@@ -1,0 +1,134 @@
+/* Container for the page */
+.contents, .module {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Module list */
+#modules {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+#modules li {
+    margin-bottom: 0.5rem;
+}
+
+#modules li a {
+    display: block;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    color: #333;
+}
+
+#modules li.selected a {
+    background-color: #007bff;
+    color: #fff;
+}
+
+#modules li a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Module header */
+.module h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.module h3 {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+/* Module contents */
+#module-contents > div {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.7rem;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#module-contents > div:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#module-contents p {
+    margin: 0 0 0.3rem 0;
+}
+
+/* Action links inside module content */
+#module-contents a {
+    display: inline-block;
+    margin-right: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+}
+
+#module-contents a:hover {
+    background-color: #0056b3;
+}
+
+/* Delete button inside form */
+#module-contents form input[type="submit"] {
+    padding: 0.3rem 0.6rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+}
+
+#module-contents form input[type="submit"]:hover {
+    background-color: #a71d2a;
+}
+
+/* Content types list */
+.content-types {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.content-types li a {
+    padding: 0.4rem 0.8rem;
+    text-decoration: none;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.content-types li a:hover {
+    background-color: #1e7e34;
+}
+
+/* Empty states */
+#modules li:empty, #module-contents p:empty {
+    font-style: italic;
+    color: #666;
+}
